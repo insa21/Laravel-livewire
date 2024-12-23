@@ -3,27 +3,15 @@
 namespace App\Livewire\Posts;
 
 use Livewire\Component;
+use App\Livewire\Forms\PostForm;
 
 class Create extends Component
 {
-    #[\Livewire\Attributes\Rule(['required', 'string', 'min:3', 'max:255'])]
-    public string $title = '';
-
-
-    #[\Livewire\Attributes\Rule(['required', 'string', 'min:3', 'max:255'])]
-    public string $body = '';
-
-    public function save()
+    public PostForm $form;
+    public function save(): void
     {
-        // TODO: implement save logic
-        $user = \App\Models\User::find(1);
-        $validated = $this->validate();
-
-        $user->posts()->create($validated);
-
-        $this->reset();
+        $this->form->store();
     }
-
 
     public function render()
     {
