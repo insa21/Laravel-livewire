@@ -25,6 +25,9 @@ class PostForm extends Form
             $this->validate()
         );
 
+        // session()->flash('message', 'Post created successfully.');
+        flash('Post created successfully.');
+
         $this->reset();
     }
 }
