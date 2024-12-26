@@ -10,7 +10,18 @@ use Livewire\Attributes\Title;
 class Index extends Component
 {
     #[\Livewire\Attributes\On('postCreated')]
-    public function updateList($post) {}
+    public function updateList($post)
+    {
+
+        //
+    }
+
+    public function placeholder()
+    {
+        return view('livewire.posts.placeholder');
+    }
+
+
 
     public function render()
     {
