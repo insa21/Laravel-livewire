@@ -8,7 +8,7 @@
                     <input type="email" id="email" name="email" wire:model="form.email" class="form-control">
                     @error('form.email')
                         <small class="d-block mt-1 text-danger">{{ $message }}</small>
-                    @enderror
+                    @enderrorFo
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label">Password</label>

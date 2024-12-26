@@ -2,29 +2,32 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\User;
-use Livewire\Attributes\Rule;
 use Livewire\Form;
+use App\Models\User;
+use App\Models\Post;
+use Livewire\Attributes\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class PostForm extends Form
 {
     #[Rule(['required', 'string', 'min:3', 'max:255'])]
-    public string $title = '';
-
-    #[Rule(['required', 'string', 'min:3', 'max:255'])]
     public string $body = '';
 
-    public function store(): void
+    /**
+     * Method untuk menyimpan data post.
+     */
+    public function store()
     {
-        $user = User::find(1); //@todo
-
-        $user->posts()->create(
+        // Validasi input dan buat post terkait user yang sedang login
+        $post = Auth::user()->posts()->create(
             $this->validate()
         );
 
-        // session()->flash('message', 'Post created successfully.');
+        // Tampilkan pesan sukses menggunakan helper flash
         flash('Post created successfully.');
 
+        // Reset properti formulir
         $this->reset();
+        return $post;
     }
 }

@@ -11,7 +11,8 @@ class Create extends Component
 
     public function save(): void
     {
-        $this->form->store();
+        $post = $this->form->store();
+        $this->dispatch('postCreated', $post->id);
     }
 
     public function render()
